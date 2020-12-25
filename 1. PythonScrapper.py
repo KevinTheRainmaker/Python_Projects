@@ -12,7 +12,8 @@ links = pagination.find_all('a')
 pages = []
 
 for link in links:
-    pages.append(link.find("span").string) # Only get strings from span
+    pages.append(link.string) # If Anchor have just one element & element have just one text, it will be same as below
+    #pages.append(link.find("span").string) # Only get strings from span
 
 pages = pages[:-1]
 print(pages) 
