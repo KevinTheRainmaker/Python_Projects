@@ -11,9 +11,12 @@ links = pagination.find_all('a')
 
 pages = []
 
-for link in links:
-    pages.append(link.string) # If Anchor have just one element & element have just one text, it will be same as below
-    #pages.append(link.find("span").string) # Only get strings from span
+for link in links[:-1]:
+    pages.append(int(link.string)) 
+    #int() => to integer / TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType' >> 'Cause of 'Next'
+    # links[]:-1]
 
-pages = pages[:-1]
-print(pages) 
+#pages = pages[:-1]
+max_page = pages[-1]
+
+#end of url; start = ~~ >> '~~' == (PageNum-1) * limit(in this case, 50) 
