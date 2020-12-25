@@ -1,1 +1,1 @@
-# Welcome to Kangbeen's Pyhon Playground
+# Welcome to Kangbeen's Python Playground
