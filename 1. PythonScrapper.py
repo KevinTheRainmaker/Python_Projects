@@ -31,7 +31,7 @@ def extract_indeed_job(html):
     return {'title': title, 'company': company, "location": location, "link": f"https://kr.indeed.com/viewjob?jk={job_id}"}
 
 
-def extract_saramin_job(html):
+#def extract_saramin_job(html):
     title = html.find("h2", {"class": "job-tit"}).find("a")["title"]
     company = html.find("div", {"class": "job_sector"})
     company_anchor = company.find("a")
@@ -48,20 +48,20 @@ def extract_saramin_job(html):
 def extract_indeed_jobs(last_page):
     jobs = []
     for page in range(last_page):
-        print(f"Scrapping page {page}")
+        #print(f"Scrapping page {page}")
         result = requests.get(f"{indeed_URL}&start={page*indeed_LIMIT}")
         soup = BeautifulSoup(result.text, "html.parser")
         results = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
         for result in results:
             job = extract_indeed_job(result)
             jobs.append(job)
-        print(jobs)
+        #print(jobs)
     return jobs
 
 
 
 
-def extract_saramin_jobs(last_page):
+#def extract_saramin_jobs(last_page):
     jobs = []
     for page in range(last_page):
         print(f"Scrapping page {page}")
@@ -77,9 +77,37 @@ def extract_saramin_jobs(last_page):
 
 
 
+
+
+
+
+
+
+
+def give_me_job(URL1, URL2):
+    last_page_1 = extract_pages(URL1)
+    last_page_2 = extract_pages(URL2)
+
+    indeed = extract_indeed_jobs(last_page_1)
+    #saramin = extract_saramin_jobs(last_page_2)
+    
+    print(last_page_1)
+    print(last_page_2)
+
+give_me_job(indeed_URL, saramin_URL)
+
+    
+
+
+
+
+
+
+
+
 # def get_indeed_jobs():
 #     last_indeed_page = extract_indeed_pages()
 #     indeed_jobs = extract_indeed_jobs(last_indeed_page)
 #     return indeed_jobs
 
-print(extract_saramin_jobs(extract_pages(saramin_URL)))
+#print(extract_saramin_jobs(extract_pages(saramin_URL)))
