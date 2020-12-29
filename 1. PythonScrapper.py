@@ -30,11 +30,11 @@ def extract_indeed_job(html):
     company = company.strip()
     location = html.find("div", {"class": "recJobLoc"})["data-rc-loc"]
     job_id = html["data-jk"]
-    return {'title': title, 'company': company, "location": location, "link": f"https://kr.indeed.com/viewjob?jk={job_id}"}
+    return {'SITE':'INDEED','Job': title, 'Company': company, "Location": location, "Link": f"https://kr.indeed.com/viewjob?jk={job_id}"}
 
 def extract_saramin_job(html):
     title = html.find("h2", {"class": "job_tit"}).find("a")["title"]
-    print("HAHAHAHAHAHA") #Problem Point
+    print("~~~~~~~~~~~~~~")
     company = html.find("div", {"class": "area_corp"})
     company_anchor = company.find("a")
     if company_anchor is not None:
@@ -44,7 +44,7 @@ def extract_saramin_job(html):
     company = company.strip()
     location = html.find("div", {"class": "job_condition"}).find("a").string
     job_id = html["value"]
-    return {'title': title, 'company': company, "location": location, "link": f"http://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx={job_id}"}
+    return {'SITE':'SARAMIN','Job': title, 'Company': company, "Location": location, "Link": f"http://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx={job_id}"}
 
 def extract_indeed_jobs(last_page):
     jobs = pd.DataFrame()
@@ -56,9 +56,9 @@ def extract_indeed_jobs(last_page):
         results = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
         for result in results:
             job = extract_indeed_job(result)
-            df = pd.DataFrame(data=job, index=[0])
+            df = pd.DataFrame.from_dict([job])
             jobs = jobs.append(df)
-            print(jobs)
+            #print(jobs)
     return jobs
 
 def extract_saramin_jobs(last_page):
@@ -71,9 +71,9 @@ def extract_saramin_jobs(last_page):
         results = soup.find_all("div", {"class": "item_recruit"})
         for result in results:
             job = extract_saramin_job(result)
-            df = pd.DataFrame.from_dict(job)
+            df = pd.DataFrame.from_dict([job])
             jobs = jobs.append(df)
-            print(jobs)
+            #print(jobs)
     return jobs
 
 def give_me_job(URL1, URL2):
@@ -81,15 +81,15 @@ def give_me_job(URL1, URL2):
     #INDEED
     last_page_1 = extract_pages(URL1)
     indeed = extract_indeed_jobs(last_page_1)
-    indeed.to_excel('./INDEED.xlsx')
+    #indeed.to_excel('./INDEED.xlsx')
 
     #SARAMIN
-    # last_page_2 = extract_pages(URL2)
-    # saramin = extract_saramin_jobs(last_page_2)
-    # saramin.to_excel('./SARAMIN.xlsx')
+    last_page_2 = extract_pages(URL2)
+    saramin = extract_saramin_jobs(last_page_2)
+    #saramin.to_excel('./SARAMIN.xlsx')
 
-    # My_Job = pd.concat([indeed,saramin])
-    # My_Job.to_excel('./Jobs(Python).xlxs')
+    My_Job = pd.concat([indeed,saramin])
+    My_Job.to_excel('./Jobs(Python).xlsx')
 
 
 #Trial
