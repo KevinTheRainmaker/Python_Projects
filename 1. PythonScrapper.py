@@ -70,7 +70,7 @@ def extract_saramin_jobs(last_page):
         soup = BeautifulSoup(result.text, "html.parser")
         results = soup.find_all("div", {"class": "item_recruit"})
         for result in results:
-            job = extract_indeed_job(result)
+            job = extract_saramin_job(result)
             df = pd.DataFrame.from_dict(job)
             jobs = jobs.append(df)
             print(jobs)
@@ -86,6 +86,7 @@ def give_me_job(URL1, URL2):
     #SARAMIN
     # last_page_2 = extract_pages(URL2)
     # saramin = extract_saramin_jobs(last_page_2)
+    # saramin.to_excel('./SARAMIN.xlsx')
 
     # My_Job = pd.concat([indeed,saramin])
     # My_Job.to_excel('./Jobs(Python).xlxs')
