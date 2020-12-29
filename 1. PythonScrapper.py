@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from openpyxl import Workbook
 import pandas as pd
 
 indeed_LIMIT = 50
@@ -72,7 +71,7 @@ def extract_saramin_jobs(last_page):
         results = soup.find_all("div", {"class": "item_recruit"})
         for result in results:
             job = extract_indeed_job(result)
-            df = pd.DataFrame(data=job, index=[0])
+            df = pd.DataFrame.from_dict(job)
             jobs = jobs.append(df)
             print(jobs)
     return jobs
@@ -82,13 +81,14 @@ def give_me_job(URL1, URL2):
     #INDEED
     last_page_1 = extract_pages(URL1)
     indeed = extract_indeed_jobs(last_page_1)
+    indeed.to_excel('./INDEED.xlsx')
 
     #SARAMIN
-    last_page_2 = extract_pages(URL2)
-    saramin = extract_saramin_jobs(last_page_2)
+    # last_page_2 = extract_pages(URL2)
+    # saramin = extract_saramin_jobs(last_page_2)
 
-    My_Job = pd.concat([indeed,saramin])
-    My_Job.to_excel('./Jobs(Python).xlxs')
+    # My_Job = pd.concat([indeed,saramin])
+    # My_Job.to_excel('./Jobs(Python).xlxs')
 
 
 #Trial
