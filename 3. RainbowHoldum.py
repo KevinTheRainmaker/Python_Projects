@@ -11,7 +11,9 @@ def is_Rainbow(card):
 
 rainbow = 0
 for num in range(1000000):
-    #print(f"{num}번째 수행")
+    per = num//10000
+    if num%10000 == 0:
+        print(f"-진행율{per}%"+" ["+"■"*((per//10)+1)+"]", end = '\r')
     card = []
     for i in range(10):
         for j in range(i+1):
