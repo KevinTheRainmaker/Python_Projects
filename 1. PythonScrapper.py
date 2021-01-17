@@ -14,15 +14,15 @@ m = t.month
 d = t.day
 
 # Sender Info
-me = # Enter Gmail
-my_password = # Enter password
+me = "sweetrainforyou@gmail.com"
+my_password = "rhrkdqls123!"
 
 # Login
 s = smtplib.SMTP_SSL('smtp.gmail.com')
 s.login(me, my_password)
 
 # Reciever Info
-email_list = ["email1", "email2", ...] 
+email_list = ["kgbko1117@naver.com"]
 
 indeed_LIMIT = 50
 saramin_LIMIT = 100
