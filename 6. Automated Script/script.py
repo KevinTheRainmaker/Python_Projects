@@ -22,10 +22,12 @@ page.click()
 tab = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_leftFrame_form_gridMenu_body_gridrow_12_cell_12_0_controltreeTextBoxElement"]/div')
 tab.click()
 
+# input 창을 먼저 클릭해야 해댱 element가 interactable 해지는 구조였기에 발생한 오류
 temp = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_MDIFrameSet_ctxFrameSet_ctxFrame_PERS07^PERS07_08^005^AmcDailyTempRegE_form_div_sample_divMain_divForm_edtTemp_input"]')
-
-temp.send_keys('36.0') # New Error: selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
-time.sleep(10)
+temp.click()
+temp.send_keys('36.3') 
 
 save = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_MDIFrameSet_ctxFrameSet_ctxFrame_PERS07^PERS07_08^005^AmcDailyTempRegE_form_div_sample_divMain_btnSave"]').click()
-time.sleep(10)
+# New Error: selenium.common.exceptions.UnexpectedAlertPresentException
+elem.send_keys(Keys.ENTER)
+time.sleep(3)
