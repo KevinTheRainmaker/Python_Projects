@@ -1,4 +1,6 @@
 import time
+import random
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
@@ -26,7 +28,7 @@ tab.click()
 # input 창을 먼저 클릭해야 해댱 element가 interactable 해지는 구조였기에 발생한 오류
 temp = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_MDIFrameSet_ctxFrameSet_ctxFrame_PERS07^PERS07_08^005^AmcDailyTempRegE_form_div_sample_divMain_divForm_edtTemp_input"]')
 temp.click()
-temp.send_keys('36.2') 
+temp.send_keys('36.'+ str(random.randrange(1,10))) # For more naturalness  
 
 save = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_MDIFrameSet_ctxFrameSet_ctxFrame_PERS07^PERS07_08^005^AmcDailyTempRegE_form_div_sample_divMain_btnSave"]').click()
 
