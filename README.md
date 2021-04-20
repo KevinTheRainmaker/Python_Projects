@@ -1,9 +1,10 @@
 # Welcome to Kangbeen's Python Playground
 
-## Project 1. PythonScrapper (last updated: 2021-01-18)
+## Project 1. PythonScrapper (last updated: 2021-04-20)
 **Overview:**
 Get job informations from two sites(in here, 'Indeed' & 'Saramin') and save them in Excel file. Send it with Gmail automatically.
 
+### You can see more cool project using this at the <a href = 'https://github.com/KevinTheRainmaker/BugBug'>BugBug</a> Repository 
 ### **Error Type**
 >> **smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted.:**
 You must have entered the wrong email address or the wrong password. If you don't, release 'Allow low-security apps to access your account'.
