@@ -1,7 +1,7 @@
 # import random
 # for i in range(5):
 #     print(random.randint(0,30))
------------
+# ----------
 word = 'a4b3cdef5gh9'
 word_list = list(word)
 print(word_list)
