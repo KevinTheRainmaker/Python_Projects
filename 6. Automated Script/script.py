@@ -43,6 +43,5 @@ while True:
         time.sleep(1)
         break
     except:
-        Alert(driver).accept()
-        button = driver.find_element_by_partial_link_text('나중에 변경')
+        button = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_leftFrame_popup_c33c4401-e3b2-c81a-2b09-569ee269d38e_form_divForm_btnDelayTextBoxElement"]/div')
         button.click()
