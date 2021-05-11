@@ -5,6 +5,18 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 
+import requests
+
+def post_message(token, channel, text):
+    response = requests.post("https://slack.com/api/chat.postMessage",
+        headers={"Authorization": "Bearer "+token},
+        data={"channel": channel,"text": text}
+    )
+    print(response)
+ 
+myToken = "xoxb-2037120074375-2048826409029-8AiMjwr7BabTY0M8m8NM8cvf"
+
+
 time.sleep(random.randrange(1,9)*60)
 
 driver = webdriver.Chrome("C:/Users/kgbko1117/chromedriver_win32/chromedriver.exe")
@@ -43,5 +55,5 @@ while True:
         time.sleep(1)
         break
     except:
-        button = driver.find_element_by_xpath('//*[@id="mainframe_VFrameSet_HFrameSet_leftFrame_popup_c33c4401-e3b2-c81a-2b09-569ee269d38e_form_divForm_btnDelayTextBoxElement"]/div')
-        button.click()
+        post_message(myToken,"#BOT","체온측정 확인 필요")
+         
