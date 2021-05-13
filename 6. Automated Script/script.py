@@ -14,7 +14,7 @@ def post_message(token, channel, text):
     )
     print(response)
  
-myToken = "xoxb-2037120074375-2048826409029-DCYN4SugUnl8Ru0vl1uvFv2p"
+myToken = "xoxb-2037120074375-2048826409029-XjAbk3aNZiGbI7yA2dmmnbWf"
 
 time.sleep(random.randrange(1,9)*60)
 
@@ -52,6 +52,5 @@ try:
 
     time.sleep(1)
 except:
-    post_message(myToken,"#bot","체온측정 확인 필요")
+    post_message(myToken,"#일반","체온측정 확인 필요")
     time.sleep(1)
-         
