@@ -7,6 +7,6 @@ def post_message(token, channel, text):
     )
     print(response)
  
-myToken = "xoxb-2037120074375-2048826409029-DCYN4SugUnl8Ru0vl1uvFv2p"
+myToken = "[Token]"
 
 post_message(myToken,"#bot","체온측정 확인 필요")
