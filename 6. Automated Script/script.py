@@ -14,7 +14,7 @@ def post_message(token, channel, text):
     )
     print(response)
  
-myToken = "xoxb-2037120074375-2048826409029-XjAbk3aNZiGbI7yA2dmmnbWf"
+myToken = "xoxb-***..."
 
 time.sleep(random.randrange(1,9)*60)
 
@@ -23,9 +23,9 @@ driver.maximize_window()
 driver.implicitly_wait(20)
 driver.get("https://zeus.gist.ac.kr/sys/main/main.do")
 elem = driver.find_element_by_name("login_id") 
-elem.send_keys('kgbko1117') 
+elem.send_keys('ID') 
 elem = driver.find_element_by_name("login_pw") 
-elem.send_keys('rhrkdqls123!')
+elem.send_keys('PW')
 elem.send_keys(Keys.ENTER)
 
 try:
