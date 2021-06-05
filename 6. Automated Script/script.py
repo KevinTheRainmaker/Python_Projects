@@ -14,18 +14,18 @@ def post_message(token, channel, text):
     )
     print(response)
  
-myToken = "xoxb-2037120074375-2048826409029-XjAbk3aNZiGbI7yA2dmmnbWf"
+myToken = "xoxb-...."
 
 time.sleep(random.randrange(1,9)*60)
 
-driver = webdriver.Chrome("C:/Users/kgbko1117/chromedriver_win32/chromedriver.exe")
+driver = webdriver.Chrome("C:/Users/username/chromedriver_win32/chromedriver.exe") # You must upgrade(re-download) ChromeDriver ver if Chrome has been updated
 driver.maximize_window()
 driver.implicitly_wait(20)
 driver.get("https://zeus.gist.ac.kr/sys/main/main.do")
 elem = driver.find_element_by_name("login_id") 
-elem.send_keys('kgbko1117') 
+elem.send_keys('ID') 
 elem = driver.find_element_by_name("login_pw") 
-elem.send_keys('rhrkdqls123!')
+elem.send_keys('PW')
 elem.send_keys(Keys.ENTER)
 
 try:
@@ -52,5 +52,5 @@ try:
 
     time.sleep(1)
 except:
-    post_message(myToken,"#일반","체온측정 확인 필요")
+    post_message(myToken,"#일반","체온측정 확인 필요") # 에러 발생 시 slack으로 메시지 발송
     time.sleep(1)
