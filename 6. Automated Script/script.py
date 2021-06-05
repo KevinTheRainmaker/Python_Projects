@@ -14,7 +14,11 @@ def post_message(token, channel, text):
     )
     print(response)
  
+<<<<<<< HEAD
 myToken = "xoxb-...."
+=======
+myToken = "xoxb-***..."
+>>>>>>> 499360046b1415fe497b2b4ea82ab397fccd3535
 
 time.sleep(random.randrange(1,9)*60)
 
@@ -52,5 +56,10 @@ try:
 
     time.sleep(1)
 except:
+<<<<<<< HEAD
     post_message(myToken,"#일반","체온측정 확인 필요") # 에러 발생 시 slack으로 메시지 발송
     time.sleep(1)
+=======
+    post_message(myToken,"#일반","체온측정 확인 필요")
+    time.sleep(1)
+>>>>>>> 499360046b1415fe497b2b4ea82ab397fccd3535
