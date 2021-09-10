@@ -23,5 +23,25 @@ else:
     f = open(file_path, 'w', encoding='utf8')
     f.close()
 
-print(post_list)
-print(post_list[0].getTitle())
+while True:
+    print('\n\n')
+    print('    -메뉴를 선택해 주세요-    ')
+    print('1. 게시글 작성')
+    print('2. 게시글 목록')
+    print('3. 프로그램 종료')
+    try:
+        choice = int(input('>>>'))
+    except:
+        print('숫자를 입력해주세요.')
+    else:
+        if choice == 1:
+            print('게시글 작성')
+        elif choice == 2:
+            print('게시글 목록')
+        elif choice == 3:
+            print('프로그램 종료')
+            break
+        # else:
+
+# print(post_list)
+# print(post_list[0].getTitle())
