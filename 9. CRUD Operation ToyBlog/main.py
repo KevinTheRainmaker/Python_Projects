@@ -38,31 +38,60 @@ def write_post():
 # 게시글 상세 확인
 def show_post_detail(id):
     '''게시글 상세 확인 함수'''
-    print('    - 게시글 상세 -    ')
+    global post_list
     for post in post_list:
         if post.getID() == id:
             # 조회수 1 증가
             post.addViewCount()
+            print('번호: ', post.getID())
+            print('제목: ', post.getTitle())
+            print('본문: ', post.getContent())    
+            print('조회수: ', post.getViewCount())
+            target_post = post
 
-            print(f'번호: {post.getID()}')
-            print(f'제목: {post.getTitle()}')
-            print(f'본문: {post.getContent()}')    
-            print(f'조회수: {post.getViewCount()}')
-    
     while True:
         print('Q) 수정(1) / 삭제(2) / 메뉴로 돌아가기(-1)')
         try:
             choice = int(input('>> '))
             if choice == 1:
-                pass
+                update_post(target_post)
+                break
             elif choice == 2:
-                pass
+                delete_post(target_post)
+                break
             elif choice == -1:
                 break
             else:
                 print('잘못 입력하셨습니다.')
         except ValueError:
             print('숫자를 입력해주세요.')
+
+# 게시글 수정
+def update_post(targetpost):
+    '''게시글 수정 함수'''
+    print('    - 게시글 수정 -    ')
+    title = input('제목을 입력해주세요\n>>')
+    content = input('본문을 입력해주세요\n>>')
+    targetpost.setPost(targetpost.id, title, content, targetpost.view_count)
+    print('수정이 완료되었습니다.')
+
+# 게시글 삭제
+def delete_post(targetpost):
+    '''게시글 삭제 함수'''
+    post_list.remove(targetpost)
+    print('# 게시글이 삭제되었습니다.')
+
+# 게시글 저장
+def save():
+    '''게시글 저장 함수'''
+    f = open(file_path, 'w',encoding='utf8')
+    writer = csv.writer(f)
+    for post in post_list:
+        row = [post.getID(), post.getTitle(), post.getContent(),post.getViewCount()]
+        writer.writerow(row)
+    f.close()
+    print('# 저장이 완료되었습니다.')
+    print('# 프로그램 종료')
 
 # 게시글 목록
 def list_post():
@@ -82,7 +111,7 @@ def list_post():
         try:
             choice = int(input('>> '))
             if choice in id_list:
-                show_post_detail(id)
+                show_post_detail(choice)
                 break
             elif choice == -1:
                 break
@@ -110,6 +139,7 @@ while True:
             list_post()
         elif choice == 3:
             print('프로그램 종료')
+            save()
             break
         # else:
 
