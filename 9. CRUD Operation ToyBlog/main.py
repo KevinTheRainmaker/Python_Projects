@@ -23,6 +23,76 @@ else:
     f = open(file_path, 'w', encoding='utf8')
     f.close()
 
+# 게시글 쓰기
+def write_post():
+    '''게시글 작성 함수'''
+    print('\n\n')
+    title = input('제목을 입력해주세요 >>\n')
+    content = input('본문을 입력해주세요 >>\n')
+    # 글 번호
+    id = post_list[-1].getID() + 1
+    post = Post(id, title, content, 0)
+    post_list.append(post)
+    print('# 게시글이 등록되었습니다')
+
+# 게시글 상세 확인
+def show_post_detail(id):
+    '''게시글 상세 확인 함수'''
+    print('    - 게시글 상세 -    ')
+    for post in post_list:
+        if post.getID() == id:
+            # 조회수 1 증가
+            post.addViewCount()
+
+            print(f'번호: {post.getID()}')
+            print(f'제목: {post.getTitle()}')
+            print(f'본문: {post.getContent()}')    
+            print(f'조회수: {post.getViewCount()}')
+    
+    while True:
+        print('Q) 수정(1) / 삭제(2) / 메뉴로 돌아가기(-1)')
+        try:
+            choice = int(input('>> '))
+            if choice == 1:
+                pass
+            elif choice == 2:
+                pass
+            elif choice == -1:
+                break
+            else:
+                print('잘못 입력하셨습니다.')
+        except ValueError:
+            print('숫자를 입력해주세요.')
+
+# 게시글 목록
+def list_post():
+    '''게시글 목록 출력 함수'''
+    print('\n\n')
+    print('    - 게시글 목록 -    ')
+    id_list = []
+    for post in post_list:
+        print(f'번호: {post.getID()}')
+        print(f'제목: {post.getTitle()}')
+        print(f'조회수: {post.getViewCount()}')
+        print()
+        id_list.append(post.getID())
+
+    while True:
+        print('Q) 글 번호를 선택해주세요. (메뉴로 돌아가려면 -1)')
+        try:
+            choice = int(input('>> '))
+            if choice in id_list:
+                show_post_detail(id)
+                break
+            elif choice == -1:
+                break
+            else:
+                print('없는 글 번호입니다.')
+        except ValueError:
+            print('숫자를 입력해주세요.')
+            
+
+# 메뉴 출력
 while True:
     print('\n\n')
     print('    -메뉴를 선택해 주세요-    ')
@@ -31,13 +101,13 @@ while True:
     print('3. 프로그램 종료')
     try:
         choice = int(input('>>>'))
-    except:
+    except ValueError:
         print('숫자를 입력해주세요.')
     else:
         if choice == 1:
-            print('게시글 작성')
+            write_post()
         elif choice == 2:
-            print('게시글 목록')
+            list_post()
         elif choice == 3:
             print('프로그램 종료')
             break
