@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 import random
 
@@ -13,7 +14,7 @@ rainbow = 0
 for num in range(1000000):
     per = num//10000
     if num%10000 == 0:
-        print(f"-진행율{per}%"+" ["+"■"*((per//10)+1)+"]", end = '\r')
+        print(f"-진행율{per}%" + " [" + "■" * ((per//10)+1) + "]" , end = '\r')
     card = []
     for i in range(10):
         for j in range(i+1):
