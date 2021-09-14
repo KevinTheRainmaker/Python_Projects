@@ -31,7 +31,11 @@ def write_post():
     title = input('제목을 입력해주세요 >>\n')
     content = input('본문을 입력해주세요 >>\n')
     # 글 번호
-    id = post_list[-1].getID() + 1
+    try:
+        id = post_list[-1].getID() + 1
+    except:
+        id = 1
+
     post = Post(id, title, content, 0)
     post_list.append(post)
     print('# 게시글이 등록되었습니다')
@@ -40,15 +44,18 @@ def write_post():
 def show_post_detail(id):
     '''게시글 상세 확인 함수'''
     global post_list
-    for post in post_list:
-        if post.getID() == id:
-            # 조회수 1 증가
-            post.addViewCount()
-            print('번호: ', post.getID())
-            print('제목: ', post.getTitle())
-            print('본문: ', post.getContent())    
-            print('조회수: ', post.getViewCount())
-            target_post = post
+    if post_list:
+        for post in post_list:
+            if post.getID() == id:
+                # 조회수 1 증가
+                post.addViewCount()
+                print('번호: ', post.getID())
+                print('제목: ', post.getTitle())
+                print('본문: ', post.getContent())    
+                print('조회수: ', post.getViewCount())
+                target_post = post
+    else:
+        print('게시글이 없습니다.')
 
     while True:
         print('Q) 수정(1) / 삭제(2) / 메뉴로 돌아가기(-1)')
