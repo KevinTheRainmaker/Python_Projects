@@ -32,9 +32,16 @@ def get_lotto(seed,m,a,c):
     
     numSetEven = numSetEven[:6]
     numSetOdd = numSetOdd[:6]
+    
+    if len(numSetEven) != 6:
+        del numSetEven
+    else:
+        print(numSetEven)
 
-    print(numSetEven)
-    print(numSetOdd)
+    if len(numSetOdd) != 6:
+        del numSetOdd
+    else:
+        print(numSetOdd)
 
     return 0
 
