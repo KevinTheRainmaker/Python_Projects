@@ -44,18 +44,15 @@ def write_post():
 def show_post_detail(id):
     '''게시글 상세 확인 함수'''
     global post_list
-    if post_list:
-        for post in post_list:
-            if post.getID() == id:
-                # 조회수 1 증가
-                post.addViewCount()
-                print('번호: ', post.getID())
-                print('제목: ', post.getTitle())
-                print('본문: ', post.getContent())    
-                print('조회수: ', post.getViewCount())
-                target_post = post
-    else:
-        print('게시글이 없습니다.')
+    for post in post_list:
+        if post.getID() == id:
+            # 조회수 1 증가
+            post.addViewCount()
+            print('번호: ', post.getID())
+            print('제목: ', post.getTitle())
+            print('본문: ', post.getContent())    
+            print('조회수: ', post.getViewCount())
+            target_post = post
 
     while True:
         print('Q) 수정(1) / 삭제(2) / 메뉴로 돌아가기(-1)')
@@ -105,29 +102,32 @@ def save():
 def list_post():
     '''게시글 목록 출력 함수'''
     print('\n\n')
-    print('    - 게시글 목록 -    ')
-    id_list = []
-    for post in post_list:
-        print(f'번호: {post.getID()}')
-        print(f'제목: {post.getTitle()}')
-        print(f'조회수: {post.getViewCount()}')
-        print()
-        id_list.append(post.getID())
+    if post_list:
+        print('    - 게시글 목록 -    ')
+        id_list = []
+        for post in post_list:
+            print(f'번호: {post.getID()}')
+            print(f'제목: {post.getTitle()}')
+            print(f'조회수: {post.getViewCount()}')
+            print()
+            id_list.append(post.getID())
 
-    while True:
-        print('Q) 글 번호를 선택해주세요. (메뉴로 돌아가려면 -1)')
-        try:
-            choice = int(input('>> '))
-            if choice in id_list:
-                show_post_detail(choice)
-                break
-            elif choice == -1:
-                break
-            else:
-                print('없는 글 번호입니다.')
-        except ValueError:
-            print('숫자를 입력해주세요.')
-            
+        while True:
+            print('Q) 글 번호를 선택해주세요. (메뉴로 돌아가려면 -1)')
+            try:
+                choice = int(input('>> '))
+                if choice in id_list:
+                    show_post_detail(choice)
+                    break
+                elif choice == -1:
+                    break
+                else:
+                    print('없는 글 번호입니다.')
+            except ValueError:
+                print('숫자를 입력해주세요.')
+
+    else:
+        print('게시글이 없습니다.\n')
 
 # 메뉴 출력
 while True:
