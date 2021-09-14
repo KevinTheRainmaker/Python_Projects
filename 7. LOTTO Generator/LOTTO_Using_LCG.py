@@ -37,10 +37,8 @@ def get_lotto(seed,m,a,c):
     print(numSetOdd)
 
     return 0
-    
-def main():
 
-    global url
+if __name__ == '__main__':
 
     ranNum = 0
     
@@ -71,6 +69,3 @@ def main():
         get_lotto(ranNum,candidate,a,c)
 
     print('\nGood Luck!\n')
-    return 0
-
-main()
