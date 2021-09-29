@@ -95,7 +95,7 @@ A project to implement various types of card games in Python and calculate the p
 
 <br/>
 
->**결과**
+>**결과 / Results**
 
     수행 결과, 약 4%의 확률로 '레인보우 홀덤'이 나와 승리할 수 있음을 알 수 있다.
     이는 수학적으로도 계산할 수 있다.
