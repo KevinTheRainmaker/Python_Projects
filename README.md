@@ -76,7 +76,7 @@ A project to implement various types of card games in Python and calculate the p
 
 <br/>
 
-**2. 점수 계산 / Scoring**
+>**점수 계산 / Scoring**
 
     모든 참가자는 자신의 카드를 공개하고 중앙의 커뮤니티 카드의 숫자와 자신의 카드의 숫자를 합산한다. 이때 숫자가 겹치는 카드는 모두 총합에서 제외된다.
     All participants disclose their cards and add up the number of central community cards with their cards. At this time, all cards with overlapping numbers are excluded from the total.
@@ -86,7 +86,7 @@ A project to implement various types of card games in Python and calculate the p
 
 <br/>
 
-**3. 구현 / Development implementation**
+>**구현 / Development implementation**
 
     위 게임 룰에 따라 게임을 구현하고, 이 중 '레인보우 홀덤'의 확률을 계산해보자.
     게임은 총 1,000,000번 진행되며, 모든 카드는 랜덤으로 배분된다.
@@ -95,13 +95,13 @@ A project to implement various types of card games in Python and calculate the p
 
 <br/>
 
-**4. 결과**
+>**결과**
 
     수행 결과, 약 4%의 확률로 '레인보우 홀덤'이 나와 승리할 수 있음을 알 수 있다.
     이는 수학적으로도 계산할 수 있다.
     As a result of the performance, it can be seen that 'Rainbow Holdum' has a probability of about 4%.
     It can also be calculated mathematically.
-    
+
 </br></br>
 
 ---
