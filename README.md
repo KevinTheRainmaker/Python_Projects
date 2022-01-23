@@ -108,7 +108,12 @@ A project to implement various types of card games in Python and calculate the p
 </br>
 
 ## Project 3. Automated Script for Temperature Check
-</br></br>
+**Overview**
+GIST forces students living in dormitories to measure their body temperature meaninglessly. This project created to automate it.
+
+</br>
+
+
 
 ---
 </br>
